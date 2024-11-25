@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Enhanced Expense Tracker</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="container">
+    <h1>💸 Expense Tracker</h1>
+    <form id="expense-form">
+      <div class="input-group">
+        <input type="text" id="expense-name" placeholder="Enter Expense Name" required>
+        <input type="number" id="expense-amount" placeholder="Amount (₹)" required>
+      </div>
+      <button type="submit" class="btn-primary">Add Expense</button>
+    </form>
+    <div class="expense-summary">
+      <h2>Total Expenses: ₹<span id="total-expenses">0</span></h2>
+    </div>
+    <div class="expense-list-container">
+      <ul id="expense-list"></ul>
+    </div>
+  </div>
+  <script src="script.js"></script>
+</body>
+</html>
