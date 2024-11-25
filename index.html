@@ -3,26 +3,26 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Enhanced Expense Tracker</title>
+  <title>Women Safety Chatbot</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <div class="container">
-    <h1>💸 Expense Tracker</h1>
-    <form id="expense-form">
-      <div class="input-group">
-        <input type="text" id="expense-name" placeholder="Enter Expense Name" required>
-        <input type="number" id="expense-amount" placeholder="Amount (₹)" required>
-      </div>
-      <button type="submit" class="btn-primary">Add Expense</button>
-    </form>
-    <div class="expense-summary">
-      <h2>Total Expenses: ₹<span id="total-expenses">0</span></h2>
+  <div class="chat-container">
+    <div class="chat-header">
+      <h2>👩‍💻 Women Safety Chatbot</h2>
+      <button id="close-chat" class="close-btn">✖</button>
     </div>
-    <div class="expense-list-container">
-      <ul id="expense-list"></ul>
+    <div class="chat-messages" id="chat-messages">
+      <div class="bot-message">
+        <p>Hi! I'm your safety assistant. How can I help you today?</p>
+      </div>
+    </div>
+    <div class="chat-input">
+      <input type="text" id="user-input" placeholder="Type your message here..." />
+      <button id="send-btn">Send</button>
     </div>
   </div>
+  <button id="chat-toggle" class="chat-toggle-btn">💬 Chat</button>
   <script src="script.js"></script>
 </body>
 </html>

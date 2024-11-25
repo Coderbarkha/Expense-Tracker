@@ -1,48 +1,51 @@
 // script.js
+
 document.addEventListener('DOMContentLoaded', () => {
-    const expenseForm = document.getElementById('expense-form');
-    const expenseNameInput = document.getElementById('expense-name');
-    const expenseAmountInput = document.getElementById('expense-amount');
-    const expenseList = document.getElementById('expense-list');
-    const totalExpensesElement = document.getElementById('total-expenses');
+    const chatToggle = document.getElementById('chat-toggle');
+    const chatContainer = document.querySelector('.chat-container');
+    const closeChat = document.getElementById('close-chat');
+    const sendBtn = document.getElementById('send-btn');
+    const userInput = document.getElementById('user-input');
+    const chatMessages = document.getElementById('chat-messages');
   
-    let totalExpenses = 0;
+    // Toggle chat visibility
+    chatToggle.addEventListener('click', () => {
+      chatContainer.style.display = 'flex';
+      chatToggle.style.display = 'none';
+    });
   
-    // Add expense to the list
-    expenseForm.addEventListener('submit', (e) => {
-      e.preventDefault();
+    closeChat.addEventListener('click', () => {
+      chatContainer.style.display = 'none';
+      chatToggle.style.display = 'block';
+    });
   
-      const expenseName = expenseNameInput.value.trim();
-      const expenseAmount = parseFloat(expenseAmountInput.value);
+    // Send message
+    sendBtn.addEventListener('click', () => {
+      const userText = userInput.value.trim();
   
-      if (!expenseName || isNaN(expenseAmount) || expenseAmount <= 0) {
-        alert('Please enter a valid expense name and amount.');
+      if (userText === '') {
+        alert('Please type a message.');
         return;
       }
   
-      // Add expense to the list
-      const expenseItem = document.createElement('li');
-      expenseItem.innerHTML = `
-        ${expenseName}: $<span>${expenseAmount.toFixed(2)}</span>
-        <button class="delete-btn">Delete</button>
-      `;
+      // Append user message
+      const userMessage = document.createElement('div');
+      userMessage.classList.add('user-message');
+      userMessage.textContent = userText;
+      chatMessages.appendChild(userMessage);
   
-      // Delete expense functionality
-      expenseItem.querySelector('.delete-btn').addEventListener('click', () => {
-        totalExpenses -= expenseAmount;
-        totalExpensesElement.textContent = totalExpenses.toFixed(2);
-        expenseItem.remove();
-      });
+      // Bot reply placeholder
+      setTimeout(() => {
+        const botMessage = document.createElement('div');
+        botMessage.classList.add('bot-message');
+        botMessage.textContent = 'Thank you for reaching out. I’m here to assist you!';
+        chatMessages.appendChild(botMessage);
+        chatMessages.scrollTop = chatMessages.scrollHeight;
+      }, 1000);
   
-      expenseList.appendChild(expenseItem);
-  
-      // Update total expenses
-      totalExpenses += expenseAmount;
-      totalExpensesElement.textContent = totalExpenses.toFixed(2);
-  
-      // Clear form inputs
-      expenseNameInput.value = '';
-      expenseAmountInput.value = '';
+      // Clear input
+      userInput.value = '';
+      chatMessages.scrollTop = chatMessages.scrollHeight;
     });
   });
   
